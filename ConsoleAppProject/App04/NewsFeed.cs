@@ -20,8 +20,10 @@ namespace ConsoleAppProject.App04
     ///</author> 
     public class NewsFeed
     {
+        public const string Author = "Mohammad Qasim Matloob";
+
         private readonly List<Post> posts;
-  
+
 
         ///<summary>
         /// Construct an empty news feed.
@@ -29,6 +31,12 @@ namespace ConsoleAppProject.App04
         public NewsFeed()
         {
             posts = new List<Post>();
+
+            MessagePost post = new MessagePost(Author, "i like VS 2019");
+            AddMessagePost(post);
+
+            PhotoPost photoPost = new PhotoPost(Author, "Photo1.jpg", "VS 2019");
+            AddMessagePost(photoPost);
         }
 
 
@@ -52,11 +60,40 @@ namespace ConsoleAppProject.App04
             posts.Add(photo);
         }
 
-        ///<summary>
-        /// Show the news feed. Currently: print the news feed details to the
-        /// terminal. (To do: replace this later with display in web browser.)
-        ///</summary>
-        public void Display()
+        public void RemovePost(int id)
+        {
+            Post post = FindPost(id);
+
+            if (post == null)
+            {
+                Console.WriteLine($" \n Post with ID = {id} does not exist!!\n");
+            }
+            else
+            {
+                Console.WriteLine($" \nThe following post {id} has been removed!\n");
+                posts.Remove(post);
+                post.Display();
+            }
+        }
+
+        public Post FindPost(int id)
+        {
+            foreach (Post post in posts)
+            {
+                if (post.PostId == id)
+                {
+                    return post;
+                }
+            }
+            return null;
+        }
+    }
+
+    ///<summary>
+    /// Show the news feed. Currently: print the news feed details to the
+    /// terminal. (To do: replace this later with display in web browser.)
+    ///</summary>
+    public void Display()
         {
             // display all text posts
             foreach (Post post in posts)

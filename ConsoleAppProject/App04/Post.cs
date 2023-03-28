@@ -5,15 +5,36 @@ namespace ConsoleAppProject.App04
 {
     public class Post
     {
+        public int PostId { get; }
+
+        public string Username { get; }
+
+
+        public DateTime Timestamp { get; }
+
+        private static int instances = 0;
         private int likes;
 
         private readonly List<String> comments;
 
 
-        // username of the post's author
-        public String Username { get; }
+        public Post (string author)
+        {
+            instances++;
+            PostId = instances;
 
-        public DateTime Timestamp { get; }
+            this.Username = author;
+            Timestamp = DateTime.Now;
+
+            likes = 0;
+            comments = new List<string>();
+        }
+
+
+        // username of the post's author
+       
+
+        
 
 
         ///<summary>
@@ -61,10 +82,11 @@ namespace ConsoleAppProject.App04
         /// (Currently: Print to the text terminal. This is simulating display 
         /// in a web browser for now.)
         ///</summary>
-        public void Display()
+        public virtual void Display()
         {
             Console.WriteLine();
-            Console.WriteLine($"    Author: {Username}");
+            Console.WriteLine($"    Post ID:      {PostId}");
+            Console.WriteLine($"    Author:       {Username}");
             Console.WriteLine($"    Time Elpased: {FormatElapsedTime(Timestamp)}");
             Console.WriteLine();
 
@@ -85,7 +107,7 @@ namespace ConsoleAppProject.App04
             {
                 Console.WriteLine($"    {comments.Count}  comment(s). Click here to view.");
             }
-
+        }
 
             ///<summary>
             /// Create a string describing a time point in the past in terms 
@@ -99,7 +121,7 @@ namespace ConsoleAppProject.App04
             /// A relative time string for the given time
             /// </returns>
      
-            public 1 String FormatElapsedTime(DateTime time)
+            public  String FormatElapsedTime(DateTime time)
             {
                 DateTime current = DateTime.Now;
                 TimeSpan timePast = current - time;

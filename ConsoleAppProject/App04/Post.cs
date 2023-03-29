@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace ConsoleAppProject.App04
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Post
     {
         public int PostId { get; }
-
         public string Username { get; }
-
-
         public DateTime Timestamp { get; }
 
         private static int instances = 0;

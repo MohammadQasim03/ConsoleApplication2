@@ -17,6 +17,7 @@ namespace ConsoleAppProject.App04
     ///<author>
     ///  Michael Kölling and David J. Barnes
     ///  version 0.1
+    ///  Modified by ...
     ///</author> 
     public class NewsFeed
     {

@@ -36,7 +36,7 @@ namespace ConsoleAppProject.App04
             AddMessagePost(post);
 
             PhotoPost photoPost = new PhotoPost(Author, "Photo1.jpg", "VS 2019");
-            AddMessagePost(photoPost);
+            AddPhotoPost(photoPost);
         }
 
 
@@ -87,13 +87,12 @@ namespace ConsoleAppProject.App04
             }
             return null;
         }
-    }
 
-    ///<summary>
-    /// Show the news feed. Currently: print the news feed details to the
-    /// terminal. (To do: replace this later with display in web browser.)
-    ///</summary>
-    public void Display()
+        ///<summary>
+        /// Show the news feed. Currently: print the news feed details to the
+        /// terminal. (To do: replace this later with display in web browser.)
+        ///</summary>
+        public void Display()
         {
             // display all text posts
             foreach (Post post in posts)
@@ -102,6 +101,26 @@ namespace ConsoleAppProject.App04
                 Console.WriteLine();   // empty line between posts
             }
         }
-    }
 
+        
+        /// <summary>
+        /// Display all the posts where the author name matches
+        /// </summary>
+        public void DisplayByAuthor(string author)
+        {
+            foreach (Post post in posts)
+            {
+                if (post.Username == author)
+                {
+                    post.Display();
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        public int GetNumberOfPosts()
+        {
+            return posts.Count;
+        }
+    }
 }

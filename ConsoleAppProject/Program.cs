@@ -19,11 +19,11 @@ namespace ConsoleAppProject
     {
         private static DistanceConverter converter = new DistanceConverter();
 
-        private static BMICalulator = new BMI();
+        private static BmiCalculator calculator = new BmiCalculator();
 
         private static StudentGrades grades = new StudentGrades();
 
-        private static NetwrokApp App04= new NetwrokApp();
+        private static NetworkApp App04= new NetworkApp();
 
         public static BMI BMI
         {
@@ -43,19 +43,18 @@ namespace ConsoleAppProject
 
             if (choiceNo == 1)
             {
-                converter.ConvertDistance();
+                //converter.ConvertDistance();
             }
             else if (choiceNo == 2)
             {
-                Calulator.CalculateIndex();
+                calculator.CalculateIndex();
             }
             else if (choiceNo == 3)
             {
-                App04.DisplayMenu();
             }
             else if (choiceNo == 4)
             {
-                else Console.WriteLine("Invalid choice!");
+                App04.DisplayMenu();
             }
         }
     }

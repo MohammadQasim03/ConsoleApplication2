@@ -5,7 +5,7 @@ using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App04
 {
-   public class NetwrokApp
+   public class NetworkApp
 	{
 
 		private NewsFeed news = new NewsFeed();
@@ -18,11 +18,11 @@ namespace ConsoleAppProject.App04
             ConsoleHelper.OutputHeading(" Mohammad Qasim Matloob nNews Feed");
 
             string[] choices = new string[]
-                {
+            {
                 "Post Message", "Post Image", "Remove Post",
                 "Display All Posts", "Display Posts by Author",
-                "Display Posts by Date", "Add Comment", "Like Post", "Quit"
-                 };
+                "Add Comment", "Like Post", "Quit"
+            };
 
             bool wantToQuit = false;
 			do
@@ -35,10 +35,9 @@ namespace ConsoleAppProject.App04
 					case 3: RemovePost(); break;
 					case 4: DisplayAll(); break;
 					case 5: DisplayByAuthor(); break;
-					case 6: DisplayByDate(); break;
-					case 7: AddComment(); break;
-					case 8: LikePosts(); break;
-					case 9: wantToQuit = true; break;
+					case 6: AddComment(); break;
+					case 7: LikePosts(); break;
+					case 8: wantToQuit = true; break;
 				}
 						
 			} while (!wantToQuit);
@@ -46,12 +45,12 @@ namespace ConsoleAppProject.App04
 
         private void AddComment()
         {
-
             ConsoleHelper.OutputTitle("Adding a Comment");
 
-            int id = (int)ConsoleHelper.InputNumber("Please enter the post id >",
-                1, Post.GetNumberOfPost());
-            Post post = news.GetPostById(id);
+            int id = (int)ConsoleHelper.InputNumber(
+                "Please enter the post id >", 1, news.GetNumberOfPosts());
+            
+            Post post = news.FindPost(id);
 
             Console.Write("Please enter your name >");
             string author = Console.ReadLine();
@@ -59,7 +58,7 @@ namespace ConsoleAppProject.App04
             Console.Write("Please enter your comment >");
             string comment = Console.ReadLine();
 
-            post.AddComment(author, comment);
+            post.AddComment(comment, author);
 
             ConsoleHelper.OutputTitle("You have just added this comment:");
 
@@ -71,29 +70,16 @@ namespace ConsoleAppProject.App04
         {
             ConsoleHelper.OutputTitle("Liking a Post");
 
-            int id = (int)ConsoleHelper.InputNumber("Please enter the post id >", 1, Post.GetNumberOfPost());
-            Post post = news.GetPostById(id);
+            int id = (int)ConsoleHelper.InputNumber(
+                "Please enter the post id >", 1, news.GetNumberOfPosts());
+            
+            Post post = news.FindPost(id);
 
-            Console.Write("Please enter your name >");
-            string author = Console.ReadLine();
-
-            post.AddLike(author);
+            post.Like();
 
             ConsoleHelper.OutputTitle("You have just liked this post:");
 
             post.Display();
-        }
-
-
-
-        private void DisplayByDate()
-        {
-            ConsoleHelper.OutputTitle("Displaying Posts by Date");
-
-            DateTime fromDate = ConsoleHelper.InputDate("Please enter the from date (dd/MM/yyyy) >");
-            DateTime toDate = ConsoleHelper.InputDate("Please enter the to date (dd/MM/yyyy) >");
-
-            news.DisplayByDate(fromDate, toDate);
         }
 
         private void DisplayByAuthor()
@@ -108,8 +94,8 @@ namespace ConsoleAppProject.App04
         {
 			ConsoleHelper.OutputTitle($"Removing a Post");
 
-			int id = (int)ConsoleHelper.InputNumber(" Please enter the post id >",
-				                                     1, Post.GetNumberOfPost());
+			int id = (int)ConsoleHelper.InputNumber(
+                " Please enter the post id >", 1, news.GetNumberOfPosts());
 			news.RemovePost(id);
         }
 
@@ -141,7 +127,7 @@ namespace ConsoleAppProject.App04
 
 			string Author = InputName();
 
-			Console.WriteLine("Please enter your Image Filename> ")
+            Console.WriteLine("Please enter your Image Filename> ");
 			string  filename = Console.ReadLine();
 
 			Console.Write(" Please enter your image caption >");

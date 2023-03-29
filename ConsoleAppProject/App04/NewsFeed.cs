@@ -25,7 +25,6 @@ namespace ConsoleAppProject.App04
 
         private readonly List<Post> posts;
 
-
         ///<summary>
         /// Construct an empty news feed.
         ///</summary>

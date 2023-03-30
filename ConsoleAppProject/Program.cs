@@ -32,7 +32,7 @@ namespace ConsoleAppProject
 
         public static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Red;
 
             ConsoleHelper.OutputHeading("BNI C0453 2022!");
 

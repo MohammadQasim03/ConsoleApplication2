@@ -10,12 +10,15 @@ namespace ConsoleAppProject.App04
 
 		private NewsFeed news = new NewsFeed();
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public void DisplayMenu()
+        /// <summary>
+        /// This code defines a method called "DisplayMenu" that,
+        /// in a loop that lasts until the user chooses to end it,
+        /// shows a menu and asks the user to choose an option.
+        /// A switch statement is then used to carry out the chosen option.
+        /// </summary>
+        public void DisplayMenu()
 		{
-            ConsoleHelper.OutputHeading(" Mohammad Qasim Matloob nNews Feed");
+            ConsoleHelper.OutputHeading(" Mohammad Qasim Matloob News Feed");
 
             string[] choices = new string[]
             {
@@ -43,6 +46,10 @@ namespace ConsoleAppProject.App04
 			} while (!wantToQuit);
 		}
 
+        /// <summary>
+        ///This C# function inserts a comment into a news application post.
+        ///The user's input is used to update the post with the latest comment.
+        /// </summary>
         private void AddComment()
         {
             ConsoleHelper.OutputTitle("Adding a Comment");
@@ -66,6 +73,10 @@ namespace ConsoleAppProject.App04
 
         }
 
+        /// <summary>
+        ///The liked post is shown and a way for like a post in a news system is defined by this code.
+        ///The Like() function of the associated post object is then called after the user is prompted to enter the post id.
+        /// </summary>
         private void LikePosts()
         {
             ConsoleHelper.OutputTitle("Liking a Post");
@@ -82,6 +93,11 @@ namespace ConsoleAppProject.App04
             post.Display();
         }
 
+        /// <summary>
+        ///This method demonstrates articles written by a single author.
+        ///The DisplayByAuthor function of the news object is called,
+        ///and the user is prompted for the author's name.
+        /// </summary>
         private void DisplayByAuthor()
         {
             ConsoleHelper.OutputTitle("Displaying Posts by Author");
@@ -90,6 +106,10 @@ namespace ConsoleAppProject.App04
             news.DisplayByAuthor(author);
         }
 
+        /// <summary>
+        ///By asking the user for a post id, this method deletes the associated post from the 'news' object.
+        ///To manage user input and output, it makes use of the 'ConsoleHelper' class.
+        /// </summary>
         private void RemovePost()
         {
 			ConsoleHelper.OutputTitle($"Removing a Post");
@@ -99,11 +119,20 @@ namespace ConsoleAppProject.App04
 			news.RemovePost(id);
         }
 
+
+        /// <summary>
+        ///This method demonstrates every piece of news in the news object.
+        /// That doesn't produce any results.
+        /// </summary>
         private void DisplayAll()
         {
             news.Display();
         }
 
+        /// <summary>
+        ///This method permits users to post messages, which are then displayed.
+        ///It uses the ConsoleHelper class and the MessagePost class.
+        /// </summary>
         private void PostMessage()
         {
             ConsoleHelper.OutputTitle("Posting a Message");
@@ -121,6 +150,10 @@ namespace ConsoleAppProject.App04
             post.Display();
         }
 
+        /// <summary>
+        ///This method permits posting of images and photos and shows them on the console.
+        ///The post is added to a news feed using the PhotoPost class.
+        /// </summary>
         private void PostImage()
         {
 			ConsoleHelper.OutputTitle("Posting an Image/photo");
@@ -142,10 +175,11 @@ namespace ConsoleAppProject.App04
 
         }
 
-
-		/// <summary>
-		/// 
-		/// </summary>
+        /// <summary>
+        ///The user is prompted to submit their name using this method,
+        ///which then returns the input as a string.
+        ///A piece of content or message's author can be determined using the string that is returned. 
+        /// </summary>
         private string InputName()
         {
 			Console.WriteLine(" Please enter your name >");

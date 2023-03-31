@@ -24,7 +24,7 @@ namespace ConsoleAppProject.App04
             {
                 "Post Message", "Post Image", "Remove Post",
                 "Display All Posts", "Display Posts by Author",
-                "Add Comment", "Like Post", "Quit"
+                "Add A Comment", "Like Post","Unlike Post", "Quit"
             };
 
             bool wantToQuit = false;
@@ -40,11 +40,29 @@ namespace ConsoleAppProject.App04
 					case 5: DisplayByAuthor(); break;
 					case 6: AddComment(); break;
 					case 7: LikePosts(); break;
-					case 8: wantToQuit = true; break;
+                    case 8: UnlikePost(); break;
+					case 9: wantToQuit = true; break;
 				}
 						
 			} while (!wantToQuit);
 		}
+
+        private void UnlikePost()
+        {
+            ConsoleHelper.OutputTitle("Disliking a Post");
+
+            int id = (int)ConsoleHelper.InputNumber(
+                "Please enter the post id >", 1, news.GetNumberOfPosts());
+
+            Post post = news.FindPost(id);
+
+            post.Unlike();
+
+            ConsoleHelper.OutputTitle("You have just Disliked this post:");
+
+            post.Display();
+        }
+
 
         /// <summary>
         ///This C# function inserts a comment into a news application post.
@@ -59,10 +77,10 @@ namespace ConsoleAppProject.App04
             
             Post post = news.FindPost(id);
 
-            Console.Write("Please enter your name >");
+            Console.Write("Please enter your name>");
             string author = Console.ReadLine();
 
-            Console.Write("Please enter your comment >");
+            Console.Write("Please enter your comment>");
             string comment = Console.ReadLine();
 
             post.AddComment(comment, author);

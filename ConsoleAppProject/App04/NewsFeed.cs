@@ -21,7 +21,7 @@ namespace ConsoleAppProject.App04
     ///</author> 
     public class NewsFeed
     {
-        public const string Author = "Mohammad Qasim Matloob";
+        public const string Author = "Mohammad  Qasim Matloob";
 
         private readonly List<Post> posts;
 
@@ -123,5 +123,21 @@ namespace ConsoleAppProject.App04
         {
             return posts.Count;
         }
+
+        internal void UnlikePost(int id)
+        {
+            Post post = FindPost(id);
+
+            if (post != null)
+            {
+                post.Unlike();
+            }
+            else
+            {
+                Console.WriteLine("Error ID cannot be Found");
+            }
+        }
+               
+        }
     }
-}
+

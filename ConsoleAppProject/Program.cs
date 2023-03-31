@@ -13,7 +13,7 @@ namespace ConsoleAppProject
     /// to start App01 to App05 for CO453 CW1
     /// 
     /// This Project has been modified by:
-    /// Derek Peacock 05/02/2022
+    /// Mohammad Qasim Matloob  05/02/2022
     /// </summary>
     public static class Program
     {
@@ -36,7 +36,7 @@ namespace ConsoleAppProject
 
             ConsoleHelper.OutputHeading("BNI C0453 2022!");
 
-            string[] choices = {"Distance Converter", "BMI Calcultor", "Student Marks",
+            string[] choices = {"Distance Converter", "BMI Calculator", "Student Marks",
             "Social Network"};
 
             int choiceNo = ConsoleHelper.SelectChoice(choices);
